@@ -1,8 +1,7 @@
 import pytest
 import sys
 from io import StringIO
-from linkedlist import LinkedList
-from linkedlist import Node
+from linkedlist import LinkedList, Node
 
 
 # Delete tests
