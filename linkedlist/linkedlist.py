@@ -65,6 +65,7 @@ class LinkedList:
             curr = self.head.next
             while curr != None:
                 if curr.value == val:
+                    prev.next = None
                     if self.tail is curr:
                         self.tail = prev
                         break

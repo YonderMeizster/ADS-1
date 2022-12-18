@@ -109,6 +109,29 @@ def test_delete_all_hard_2():
     assert l.head is nodes[2] and l.tail is nodes[10]
 
 
+def test_delete_all_hard_3():
+    nodes = [Node(5), Node(5), Node(3), Node(3), Node(3), Node(3), 
+             Node(3), Node(3), Node(3), Node(5), Node(3), Node(5),
+             Node(5), Node(3), Node(3), Node(3), Node(3), Node(3),]
+    l = LinkedList()
+    for node in nodes:
+        l.add_in_tail(node)
+    l.delete(5, True)
+
+    assert (l.head is nodes[2] and l.tail is nodes[len(nodes) - 1] and
+           l.tail.next is None)
+
+
+def test_delete_many_from_tail():
+    nodes = [Node(5), Node(5), Node(3), Node(4), Node(5), Node(5),
+             Node(5), Node(5)]
+    l = LinkedList()
+    for node in nodes:
+        l.add_in_tail(node)
+    l.delete(5, True)
+    assert l.head is nodes[2] and l.tail is nodes[3] and l.tail.next is None
+
+
 # Clean tests
 def test_clean():
     l = LinkedList()
