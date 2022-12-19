@@ -1,4 +1,4 @@
-import pytest
+# import pytest
 from sum_linked_lists import sum_linkedlists
 from linkedlist import LinkedList, Node
 
@@ -35,3 +35,15 @@ def test_one_shorter():
         l2.add_in_tail(node)
     l2.add_in_tail(Node(1))
     assert sum_linkedlists(l1, l2) == None
+
+
+def test_another_shorter():
+    l1 = LinkedList()
+    l2 = LinkedList()
+    nodes = [Node(1), Node(2), Node(3), Node(4), Node(5)]
+    for node in nodes:
+        l1.add_in_tail(Node(1))
+        l2.add_in_tail(node)
+    l1.add_in_tail(Node(1))
+    assert sum_linkedlists(l1, l2) == None
+
