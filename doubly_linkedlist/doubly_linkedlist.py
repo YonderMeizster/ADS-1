@@ -75,12 +75,35 @@ class LinkedList2:
         return length
 
     def insert(self, afterNode, newNode):
-        pass # здесь будет ваш код
+        newNode.next = newNode.prev = None
+        if afterNode == None:
+            if self.head is self.tail is None:
+                self.head = self.tail = newNode
+            else:
+                newNode.prev = self.tail
+                self.tail.next = newNode
+                self.tail = newNode
+        else:
+            curr = self.head
+            while curr != None:
+                if curr is afterNode:
+                    break
+                curr = curr.next
+            else:
+                return
+            if afterNode is self.tail:
+                self.tail = newNode
+            else:
+                afterNode.next.prev = newNode
+                newNode.next = afterNode.next
+            afterNode.next = newNode
+            newNode.prev = afterNode
 
     def add_in_head(self, newNode):
+        newNode.next = newNode.prev = None
         if self.head is None:
-            self.head = self.tail = newNode
-            newNode.prev = newNode.next = None
+            self.tail = newNode
         else:
             newNode.next = self.head
-            self.head = newNode
+            self.head.prev = newNode
+        self.head = newNode

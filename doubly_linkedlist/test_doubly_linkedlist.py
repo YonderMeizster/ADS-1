@@ -172,15 +172,96 @@ def test_delete_mid():
 
 
 #2.5Tests insert
+def test_insert_after_none_empty():
+    l = LinkedList2()
+    node = Node(1)
+    l.insert(None, node)
+    assert l.head is l.tail is node
+    assert node.next is node.prev is None
 
+
+def test_insert_after_none():
+    l = LinkedList2()
+    nodes = [Node(1), Node(1), Node(1),]
+    for node in nodes:
+        l.add_in_tail(node)
+    node = Node(1)
+    l.insert(None, node)
+    assert l.head is nodes[0]
+    assert l.tail is node
+    assert nodes[-1].next is node
+    assert node.prev is nodes[-1]
+    assert node.next is None
+
+
+def test_insert_after_incorrect_empty():
+    l = LinkedList2()
+    l.insert(Node(1), Node(1))
+    assert l.head is l.tail is None
+
+
+def test_insert_after_incorrect():
+    l = LinkedList2()
+    nodes = [Node(1), Node(1), Node(1),]
+    for node in nodes:
+        l.add_in_tail(node)
+    node = Node(1)
+    l.insert(Node(1), node)
+    assert l.head is nodes[0]
+    assert l.tail is nodes[2]
+    assert l.head.next is nodes[1]
+    assert l.head.next.next is nodes[2]
+    assert l.head.prev is l.tail.next is None
+
+
+def test_insert_in_middle():
+    l = LinkedList2()
+    nodes = [Node(1), Node(1), Node(1),]
+    for node in nodes:
+        l.add_in_tail(node)
+    node = Node(1)
+    l.insert(nodes[1], node)
+    assert nodes[1].next is node
+    assert node.prev is nodes[1]
+    assert node.next is nodes[2]
+    assert nodes[2].prev is node
+    assert l.tail is nodes[2]
+
+
+def test_insert_in_tail():
+    l = LinkedList2()
+    nodes = [Node(1), Node(1), Node(1),]
+    for node in nodes:
+        l.add_in_tail(node)
+    node = Node(1)
+    l.insert(nodes[2], node)
+    assert l.tail is node
+    assert node.next is None
+    assert node.prev is nodes[2]
+    assert nodes[2].next is node
 
 
 #2.6Tests add_in_head
-def test_empty_addhead():
+def test_addhead_empty():
     l = LinkedList2()
     node = Node(1)
     l.add_in_head(node)
-    assert l.head is l.tail is node and l.head.prev is l.head.next is l.tail.next is l.tail
+    assert (l.head is l.tail is node and l.head.prev is l.head.next is
+            l.tail.prev is l.tail.next is None)
+
+
+def test_addhead_normal():
+    l = LinkedList2()
+    nodes = [Node(1), Node(1), Node(1), Node(1), Node(1), Node(1)]
+    for node in nodes:
+        l.add_in_head(node)
+    
+    assert l.head is nodes[-1]
+    assert l.tail is nodes[0]
+    assert l.head.prev is None
+    assert l.tail.next is None
+    assert l.head.next is nodes[-2]
+    assert l.tail.prev is nodes[1]
 
 
 #2.7Tests clean
