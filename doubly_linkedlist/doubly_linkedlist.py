@@ -59,7 +59,8 @@ class LinkedList2:
             else:
                 node.prev.next = node.next
                 node.next.prev = node.prev
-
+        else:
+            pass
 
 
     def clean(self):
@@ -77,4 +78,9 @@ class LinkedList2:
         pass # здесь будет ваш код
 
     def add_in_head(self, newNode):
-        pass # здесь будет ваш код
+        if self.head is None:
+            self.head = self.tail = newNode
+            newNode.prev = newNode.next = None
+        else:
+            newNode.next = self.head
+            self.head = newNode

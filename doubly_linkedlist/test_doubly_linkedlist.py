@@ -1,7 +1,7 @@
 import pytest
 from doubly_linkedlist import LinkedList2, Node
 
-#Find tests
+#2.1Find tests
 def test_find_in_empty():
     l = LinkedList2()
     assert l.find(5) == None
@@ -40,7 +40,7 @@ def test_find_missing():
     assert l.find(5) == None
 
 
-#Tests find all
+#2.2Tests find all
 def test_find_all_empty():
     l = LinkedList2()
     assert l.find_all(2) == []
@@ -89,7 +89,7 @@ def test_find_all_from_all():
             founded[-1] is l.tail and founded[-1].next == None)
 
 
-#Tests delete
+#2.3Tests delete
 def test_delete_empty():
     l = LinkedList2()
     l.delete(1)
@@ -167,11 +167,23 @@ def test_delete_mid():
             l.head.prev is l.tail.next is None)
 
 
-#Tests delete all
+#2.4Tests delete all
 
 
 
-#Tests clean
+#2.5Tests insert
+
+
+
+#2.6Tests add_in_head
+def test_empty_addhead():
+    l = LinkedList2()
+    node = Node(1)
+    l.add_in_head(node)
+    assert l.head is l.tail is node and l.head.prev is l.head.next is l.tail.next is l.tail
+
+
+#2.7Tests clean
 def test_clean_empty():
     l = LinkedList2()
     l.clean()
@@ -187,7 +199,7 @@ def test_clean_normal():
     assert l.head is l.tail is None
 
 
-#Tests len
+#2.8Tests len
 def test_len_empty():
     l = LinkedList2()
     assert l.len() == 0
