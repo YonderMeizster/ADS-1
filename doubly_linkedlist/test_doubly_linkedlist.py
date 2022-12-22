@@ -2,7 +2,7 @@ import pytest
 from doubly_linkedlist import LinkedList2, Node
 
 
-# 2.1Find tests
+# 2.1 Tests find
 def test_find_in_empty():
     l = LinkedList2()
     assert l.find(5) is None
@@ -41,7 +41,7 @@ def test_find_missing():
     assert l.find(5) is None
 
 
-# 2.2Tests find all
+# 2.2 Tests find all
 def test_find_all_empty():
     l = LinkedList2()
     assert l.find_all(2) == []
@@ -91,7 +91,7 @@ def test_find_all_from_all():
             founded[-1] is l.tail and founded[-1].next is None)
 
 
-# 2.3Tests delete
+# 2.3 Tests delete
 def test_delete_empty():
     l = LinkedList2()
     l.delete(1)
@@ -171,8 +171,7 @@ def test_delete_mid():
             l.head.prev is l.tail.next is None)
 
 
-# 2.4Tests delete all
-
+# 2.4 Tests delete all
 def test_deleteall_empty():
     l = LinkedList2()
     l.delete(1, True)
@@ -251,7 +250,7 @@ def test_deleteall_long_tail():
     assert l.tail.prev is l.head
 
 
-# 2.5Tests insert
+# 2.5 Tests insert
 def test_insert_after_none_empty():
     l = LinkedList2()
     node = Node(1)
@@ -321,7 +320,7 @@ def test_insert_in_tail():
     assert nodes[2].next is node
 
 
-# 2.6Tests add_in_head
+# 2.6 Tests add_in_head
 def test_addhead_empty():
     l = LinkedList2()
     node = Node(1)
@@ -344,7 +343,7 @@ def test_addhead_normal():
     assert l.tail.prev is nodes[1]
 
 
-# 2.7Tests clean
+# 2.7 Tests clean
 def test_clean_empty():
     l = LinkedList2()
     l.clean()
@@ -360,7 +359,7 @@ def test_clean_normal():
     assert l.head is l.tail is None
 
 
-# 2.8Tests len
+# 2.8 Tests len
 def test_len_empty():
     l = LinkedList2()
     assert l.len() == 0
