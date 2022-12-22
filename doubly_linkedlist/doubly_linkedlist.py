@@ -4,7 +4,7 @@ class Node:
         self.prev = None
         self.next = None
 
-class LinkedList2:  
+class LinkedList2:
     def __init__(self):
         self.head = None
         self.tail = None
@@ -24,7 +24,7 @@ class LinkedList2:
             node = self.head
         else:
             return None
-        while node != None:
+        while node is not None:
             if node.value == val:
                 return node
             node = node.next
@@ -36,15 +36,16 @@ class LinkedList2:
             node = self.head
         else:
             return founded
-        while node != None:
+        while node is not None:
             if node.value == val:
                 founded.append(node)
             node = node.next
         return founded
 
     def delete(self, val, all=False):
-        #todo: add all=True case
-        if all == False:
+        if self.head is self.tail is None: return
+        
+        if not all:
             node = self.find(val)
             if not node: return None
             if self.head is node:
@@ -60,8 +61,24 @@ class LinkedList2:
                 node.prev.next = node.next
                 node.next.prev = node.prev
         else:
-            pass
-
+            while self.head.value == val:
+                if self.head is self.tail:
+                    self.head = self.tail = None
+                    return
+                self.head = self.head.next
+                self.head.prev = None
+            curr_node = self.head.next
+            prev_node = self.head
+            prev_node.next = None
+            self.tail = prev_node
+            while curr_node != None:
+                if curr_node.value != val:
+                    prev_node.next = curr_node
+                    curr_node.prev = prev_node
+                    prev_node = curr_node
+                    self.tail = curr_node
+                curr_node = curr_node.next
+                prev_node.next = None
 
     def clean(self):
         self.head = self.tail = None
@@ -69,14 +86,14 @@ class LinkedList2:
     def len(self):
         length = 0
         node = self.head
-        while node != None:
+        while node is not None:
             length += 1
             node = node.next
         return length
 
     def insert(self, afterNode, newNode):
         newNode.next = newNode.prev = None
-        if afterNode == None:
+        if afterNode is None:
             if self.head is self.tail is None:
                 self.head = self.tail = newNode
             else:
@@ -84,11 +101,11 @@ class LinkedList2:
                 self.tail.next = newNode
                 self.tail = newNode
         else:
-            curr = self.head
-            while curr != None:
-                if curr is afterNode:
+            curr_node = self.head
+            while curr_node is not None:
+                if curr_node is afterNode:
                     break
-                curr = curr.next
+                curr_node = curr_node.next
             else:
                 return
             if afterNode is self.tail:
