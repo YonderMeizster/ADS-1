@@ -4,3 +4,4 @@ first asd.code-workspace
 ADS-1.code-workspace
 venv/
 
+.vscode/settings.json
