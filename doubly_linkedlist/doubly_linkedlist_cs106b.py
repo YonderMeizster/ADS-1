@@ -51,6 +51,7 @@ class LinkedList2_cs106b(LinkedList2):
         while curr is not self.tail:
             if curr is node:
                 return True
+            curr = curr.next
         return False
 
 
@@ -91,6 +92,7 @@ class LinkedList2_cs106b(LinkedList2):
         if not self._contains_node(afterNode) : return
         newNode.next = afterNode.next
         newNode.prev = afterNode
+        afterNode.next = newNode
         if newNode.next is not None:
             newNode.next.prev = newNode
         

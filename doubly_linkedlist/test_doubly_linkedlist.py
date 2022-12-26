@@ -261,7 +261,7 @@ def test_insert_after_none_empty():
 
 def test_insert_after_none():
     l = LinkedList2()
-    nodes = [Node(1), Node(1), Node(1), ]
+    nodes = [Node(1), Node(1), Node(1)]
     for node in nodes:
         l.add_in_tail(node)
     node = Node(1)
@@ -281,7 +281,7 @@ def test_insert_after_incorrect_empty():
 
 def test_insert_after_incorrect():
     l = LinkedList2()
-    nodes = [Node(1), Node(1), Node(1), ]
+    nodes = [Node(1), Node(1), Node(1)]
     for node in nodes:
         l.add_in_tail(node)
     node = Node(1)
@@ -295,7 +295,7 @@ def test_insert_after_incorrect():
 
 def test_insert_in_middle():
     l = LinkedList2()
-    nodes = [Node(1), Node(1), Node(1), ]
+    nodes = [Node(1), Node(1), Node(1)]
     for node in nodes:
         l.add_in_tail(node)
     node = Node(1)
@@ -309,7 +309,7 @@ def test_insert_in_middle():
 
 def test_insert_in_tail():
     l = LinkedList2()
-    nodes = [Node(1), Node(1), Node(1), ]
+    nodes = [Node(1), Node(1), Node(1)]
     for node in nodes:
         l.add_in_tail(node)
     node = Node(1)
