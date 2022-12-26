@@ -20,7 +20,7 @@ def sum_linkedlists(first : LinkedList, second : LinkedList):
     curr_in_second = second.head
     
     while curr_in_first != None or curr_in_second != None:
-        #It is possible to check immediately if the lengths of the lists
+        # It is possible to check immediately if the lengths of the lists
         # are equal via their .len() method, but this implementation
         # speeds up execution by 10%
         if ((curr_in_first.next == None or
