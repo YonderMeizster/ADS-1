@@ -83,35 +83,44 @@ def test_delete_all_capasity_still_16():
     array = DynArray()
     for i in range(100):
         array.append(i)
-    assert array.capacity == 128
     while len(array) != 0:
         array.delete(0)
-    assert array.capacity == 16
+    assert array.capacity >= 16
 
 
-def test_delete_resize():
+def test_delete_no_resize_1():
+    array = DynArray()
+    for i in range(51):
+        array.append(i)
+    prev_capacity = array.capacity # array.capacity == 64
+    array.delete(0)
+    assert array.capacity == prev_capacity # capacity shouldn't change
+
+
+def test_delete_no_resize_2():
+    array = DynArray()
+    for i in range(16):
+        array.append(i)
+    for i in range(16):
+        array.delete(0)
+        assert array.capacity == 16
+
+
+def test_delete_count_equal_50_percent():
     array = DynArray()
     for i in range(17):
         array.append(i)
+    array.delete(0)
     assert array.capacity == 32
-    array.delete(0)
-    assert array.capacity == 21 # int(32 / 1.5)
 
 
-def test_delete_capasity_greater_than_16():
+def test_delete_count_below_50_percent():
     array = DynArray()
-    array.append(1)
-    array.capacity = 20 # dirty hack
+    for i in range(17):
+        array.append(i)
     array.delete(0)
-    assert array.capacity == 20
-
-
-def test_delete_capasity_equal_16():
-    array = DynArray()
-    array.append(1)
-    array.capacity = 24 # dirty hack
     array.delete(0)
-    assert array.capacity == 16
+    assert array.capacity == 21
 
 
 def test_delete_below_bounds():
