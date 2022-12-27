@@ -50,7 +50,10 @@ class DynArray:
             self.array[index] = self.array[index + 1]
         self.array[self.count - 1] = ctypes.py_object()
         self.count -= 1
-        
-        if (self.capacity > self.count * 2 and
-                int(self.capacity / 1.5) >= 16):
-            self.resize(int(self.capacity / 1.5))
+
+        if self.capacity > self.count * 2:
+            if int(self.capacity / 1.5) < 16:
+                self.resize(16)
+            else:
+                self.resize(int(self.capacity / 1.5))
+            

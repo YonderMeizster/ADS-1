@@ -70,6 +70,14 @@ def test_delete_empty():
         array.delete(0)
 
 
+def test_delete_one_element():
+    array = DynArray()
+    array.append(1)
+    array.capacity = 1
+    array.delete(0)
+    assert array.capacity == 16
+
+
 def test_delete_all():
     array = DynArray()
     for i in range(10):
@@ -85,7 +93,7 @@ def test_delete_all_capasity_still_16():
         array.append(i)
     while len(array) != 0:
         array.delete(0)
-    assert array.capacity >= 16
+    assert array.capacity == 16
 
 
 def test_delete_no_resize_1():
@@ -104,6 +112,16 @@ def test_delete_no_resize_2():
     for i in range(16):
         array.delete(0)
         assert array.capacity == 16
+
+
+def test_delete_below_50_perc_capacity_will_be_16():
+    r"""This test verifies that the capacity remains equal to 16 even
+    when it should be less than 16 after the last decrease"""
+    array = DynArray()
+    array.append(1)
+    array.capacity = 17 # dirty hack
+    array.delete(0)
+    assert array.capacity == 16
 
 
 def test_delete_count_equal_50_percent():
