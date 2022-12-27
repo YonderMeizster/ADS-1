@@ -33,14 +33,14 @@ class LinkedList2_cs106b(LinkedList2):
     def len(self):
         curr = self.head.next
         count = 0
-        while curr is not self.tail:
+        while isinstance(curr, Node):
             count += 1
             curr = curr.next
         return count
 
     def find(self, val):
         curr = self.head.next
-        while curr is not self.tail:
+        while isinstance(curr, Node):
             if curr.value == val:
                 return curr
             curr = curr.next
@@ -48,7 +48,7 @@ class LinkedList2_cs106b(LinkedList2):
 
     def _contains_node(self, node):
         curr = self.head.next
-        while curr is not self.tail:
+        while isinstance(curr, Node):
             if curr is node:
                 return True
             curr = curr.next
@@ -58,23 +58,23 @@ class LinkedList2_cs106b(LinkedList2):
     def find_all(self, val):
         founded = []
         curr = self.head.next
-        while curr is not self.tail:
+        while isinstance(curr, Node):
             if curr.value == val:
                 founded.append(curr)
             curr = curr.next
         return founded
 
-
+    # todo: refactor if statement
     def delete(self, val, all=False):
         curr = self.head.next
         if all is True:
-            while curr is not self.tail:
+            while isinstance(curr, Node):
                 if curr.value == val:
                     curr.prev.next = curr.next
                     curr.next.prev = curr.prev
                 curr = curr.next
         else:
-            while curr is not self.tail:
+            while isinstance(curr, Node):
                 if curr.value == val:
                     curr.prev.next = curr.next
                     curr.next.prev = curr.prev
