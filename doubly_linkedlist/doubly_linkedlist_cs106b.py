@@ -54,7 +54,6 @@ class LinkedList2_cs106b(LinkedList2):
             curr = curr.next
         return False
 
-
     def find_all(self, val):
         founded = []
         curr = self.head.next
@@ -64,22 +63,14 @@ class LinkedList2_cs106b(LinkedList2):
             curr = curr.next
         return founded
 
-    # todo: refactor if statement
     def delete(self, val, all=False):
         curr = self.head.next
-        if all is True:
-            while isinstance(curr, Node):
-                if curr.value == val:
-                    curr.prev.next = curr.next
-                    curr.next.prev = curr.prev
-                curr = curr.next
-        else:
-            while isinstance(curr, Node):
-                if curr.value == val:
-                    curr.prev.next = curr.next
-                    curr.next.prev = curr.prev
-                    break
-                curr = curr.next
+        while isinstance(curr, Node):
+            if curr.value == val:
+                curr.prev.next = curr.next
+                curr.next.prev = curr.prev
+                if not all: break
+            curr = curr.next
     
     def insert(self, afterNode, newNode):
         if afterNode is None:
