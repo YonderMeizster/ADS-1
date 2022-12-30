@@ -26,4 +26,3 @@ def sum_linkedlists(first : LinkedList, second : LinkedList):
 
     if isinstance(curr_in_second, type(curr_in_first)):
         return summed_values
-
