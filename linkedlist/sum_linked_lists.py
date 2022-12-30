@@ -16,14 +16,17 @@ def sum_linkedlists(first : LinkedList, second : LinkedList):
     summed_values = LinkedList()
     curr_in_first = first.head
     curr_in_second = second.head
-    while curr_in_first and curr_in_second:
-        # It is possible to check immediately if the lengths of the lists
-        # are equal via their .len() method, but this implementation
-        # speeds up execution by 10%
-        summed_values.add_in_tail(Node(curr_in_first.value +
-                                       curr_in_second.value))
-        curr_in_first = curr_in_first.next
-        curr_in_second = curr_in_second.next
+    try:
+        while curr_in_first:
+            # It is possible to check immediately if the lengths of the lists
+            # are equal via their .len() method, but this implementation
+            # speeds up execution by 10%
+            summed_values.add_in_tail(Node(curr_in_first.value +
+                                           curr_in_second.value))
+            curr_in_first = curr_in_first.next
+            curr_in_second = curr_in_second.next
+    except AttributeError:
+        return None
 
     if isinstance(curr_in_second, type(curr_in_first)):
         return summed_values
