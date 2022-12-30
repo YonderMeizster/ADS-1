@@ -9,10 +9,6 @@ def sum_linkedlists(first : LinkedList, second : LinkedList):
     returns empty new linkedlist
     Values of Nodes in linked list have to support sum operation.
     Function use '+' operator"""
-    if not first or not second:
-        # I would prefer to raise an exception in this case, but
-        # so be it
-        return None
     summed_values = LinkedList()
     curr_in_first = first.head
     curr_in_second = second.head
@@ -31,4 +27,3 @@ def sum_linkedlists(first : LinkedList, second : LinkedList):
     if isinstance(curr_in_second, type(curr_in_first)):
         return summed_values
 
-    return None
