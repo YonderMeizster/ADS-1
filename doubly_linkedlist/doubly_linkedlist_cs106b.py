@@ -74,16 +74,14 @@ class LinkedList2_cs106b(LinkedList2):
     
     def insert(self, afterNode, newNode):
         if afterNode is None:
-            if self.head.next is self.tail:
+            if not isinstance(self.head.next, Node):
                 self.add_in_head(newNode)
                 return
-            else:
-                self.add_in_tail(newNode)
-                return
+            self.add_in_tail(newNode)
+            return
         if not self._contains_node(afterNode) : return
         newNode.next = afterNode.next
         newNode.prev = afterNode
         afterNode.next = newNode
-        if newNode.next is not None:
-            newNode.next.prev = newNode
+        newNode.next.prev = newNode
         

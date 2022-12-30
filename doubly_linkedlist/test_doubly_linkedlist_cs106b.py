@@ -301,7 +301,7 @@ def test_insert_in_middle():
 
 def test_insert_in_tail():
     l = LinkedList2_cs106b()
-    nodes = [Node(1), Node(1), Node(1), ]
+    nodes = [Node(1), Node(1), Node(1)]
     for node in nodes:
         l.add_in_tail(node)
     node = Node(1)
