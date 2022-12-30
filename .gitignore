@@ -5,3 +5,4 @@ ADS-1.code-workspace
 venv/
 .vscode/settings.json
 dynarray/__pycache__/
+stack/__pycache__/
