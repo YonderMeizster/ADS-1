@@ -8,7 +8,7 @@ def test_true():
                  '((())(()))',
                  '((()()()))']
     for seq in sequences:
-        assert verify_brackets(seq) == True
+        assert verify_parentheses(seq) == True
 
 
 def test_false():
@@ -18,4 +18,4 @@ def test_false():
                  '((()))()))',
                  '((()()()())']
     for seq in sequences:
-        assert verify_brackets(seq) == False
+        assert verify_parentheses(seq) == False
