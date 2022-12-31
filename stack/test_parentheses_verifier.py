@@ -1,4 +1,4 @@
-from brackets_verifier import verify_brackets
+from parentheses_verifier import verify_parentheses
 
 
 def test_true():
