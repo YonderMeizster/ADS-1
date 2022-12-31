@@ -4,8 +4,8 @@ from stack import Stack
 def verify_parentheses(parentheses: str):
     s = Stack()
     for parenthesis in parentheses:
-        if bracket == '(':
-            s.push(bracket)
+        if parenthesis == '(':
+            s.push(parenthesis)
             continue
         if s.pop() == None:
             return False
