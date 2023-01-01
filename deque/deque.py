@@ -9,16 +9,14 @@ class Deque:
         self.deque.append(item)
 
     def removeFront(self):
-        try:
+        if self.size() > 0:
             return self.deque.pop(0)
-        except IndexError:
-            return None
+        return None
 
     def removeTail(self):
-        try:
+        if self.size() > 0:
             return self.deque.pop(-1)
-        except IndexError:
-            return None
+        return None
 
     def size(self):
         return len(self.deque)
