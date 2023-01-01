@@ -1,5 +1,5 @@
 # Classes dublicates looks dirty. This is the only way to use my classes
-# on a remote verification server
+# on a remote verification server.
 
 
 class Node:
@@ -104,9 +104,9 @@ class Queue():
 
     def dequeue(self):
         if isinstance(self.queue.head.next, Node):
-            item = self.queue.head.next
-            self.queue.delete(item.value)
-            return item.value
+            value = self.queue.head.next.value
+            self.queue.delete(value)
+            return value
         return None
 
     def size(self):
