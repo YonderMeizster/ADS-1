@@ -3,7 +3,9 @@ from stack import Stack
 
 def calculate(expression : Stack):
     operators = {'+' : lambda s: s.push(s. pop() + s.pop()),
+                 '-' : lambda s: s.push(s.pop() - s.pop()),
                  '*' : lambda s: s.push(s.pop() * s.pop()),
+                 '/' : lambda s: s.push(s.pop() / s.pop()),
                  '=' : lambda s: s.pop()}
     digits = Stack()
     answer = None
