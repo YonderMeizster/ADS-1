@@ -1,12 +1,18 @@
 from stack import Stack
 
 
-def calculate(expression : Stack):
-    operators = {'+' : lambda s: s.push(s. pop() + s.pop()),
-                 '-' : lambda s: s.push(s.pop() - s.pop()),
-                 '*' : lambda s: s.push(s.pop() * s.pop()),
-                 '/' : lambda s: s.push(s.pop() / s.pop()),
-                 '=' : lambda s: s.pop()}
+def estimate(stack, operation):
+    operand1 = stack.pop()
+    operand2 = stack.pop()
+    return eval(f'{operand1} {operation} {operand2}')
+
+
+def calculate(expression: Stack):
+    operators = {'+': lambda s: s.push(estimate(s, '+')),
+                 '-': lambda s: s.push(estimate(s, '-')),
+                 '*': lambda s: s.push(estimate(s, '*')),
+                 '/': lambda s: s.push(estimate(s, '/')),
+                 '=': lambda s: s.pop()}
     digits = Stack()
     answer = None
     while expression.size() > 0:
