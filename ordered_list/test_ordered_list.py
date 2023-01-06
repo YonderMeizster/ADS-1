@@ -48,6 +48,29 @@ def test_add_ascending_middle():
     assert order1.tail.next is None
 
 
+#Tests clean
+def test_clean_empty():
+    order1 = OrderedList(asc = True)
+    assert order1._OrderedList__ascending == True
+    order1.clean(asc = False)
+    assert order1._OrderedList__ascending == False
+
+
+def test_clean():
+    order1 = OrderedList(asc = False)
+    order1.add(5)
+    order1.add(3)
+    order1.add(8)
+    assert order1._get_all_debug() == [8, 5, 3]
+    order1.clean(asc = True)
+    assert order1.head is None
+    assert order1.tail is None
+    order1.add(5)
+    order1.add(3)
+    order1.add(8)
+    assert order1._get_all_debug() == [3, 5, 8]
+
+
 #Tests find
 def test_find_empty():
     order1 = OrderedList(asc = True)

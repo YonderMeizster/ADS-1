@@ -79,9 +79,7 @@ class OrderedList:
         node.next = node.prev = None
 
     def clean(self, asc):
-        self.__ascending = asc
-        self.head = None
-        self.tail = None
+        self.__init__(asc)
 
     def len(self):
         count = 0
