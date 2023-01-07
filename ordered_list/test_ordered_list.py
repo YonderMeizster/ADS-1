@@ -63,6 +63,7 @@ def test_clean():
     order1.add(8)
     assert order1._get_all_debug() == [8, 5, 3]
     order1.clean(asc = True)
+    assert order1.len() == 0
     assert order1.head is None
     assert order1.tail is None
     order1.add(5)
