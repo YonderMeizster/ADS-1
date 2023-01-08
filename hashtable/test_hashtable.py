@@ -42,15 +42,18 @@ def test_seek_slot_2():
     # Also None for ord('a') + step:
     assert hash_table.seek_slot(chr(ord('a') + step)) is None
 
-
-a = HashTable(1, 3)
-a.put('Катя')
-a.put('Полина')
-a.put('Дональд Дак')
-a.put('Дональд Дак1')
-a.put('Дональд Дак2')
-print(a.slots)
-
-print(a.find('Катя'))
-print(a.find('Полина'))
-print(a.find('Дональд Дак'))
+# Test find
+def test_find_1():
+    hash_table = HashTable(7, 2)
+    stroks = ['bla',
+              'bla-bla',
+              'bla-bla-bla',
+              'stroka4',
+              'stroka5',
+              'asda',
+              'sdfgfds']
+    for stroka in stroks:
+        hash_table.put(stroka)
+    assert hash_table.find('no_stroka') is None
+    for stroka in stroks:
+        assert 0 <= hash_table.find(stroka) < 7

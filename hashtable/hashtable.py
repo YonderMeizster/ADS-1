@@ -2,7 +2,7 @@ class HashTable:
     def __init__(self, sz, stp):
         if sz <= 0:
             return None
-        if stp <=0:
+        if stp <= 0:
             return None
         self.size = sz
         self.step = stp
@@ -23,7 +23,6 @@ class HashTable:
             visited_slots.append(index)
             index = (index + self.step) % self.size
         return index
-            
 
     def put(self, value):
         founded_slot = self.seek_slot(value)
