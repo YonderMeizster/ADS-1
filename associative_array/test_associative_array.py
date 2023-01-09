@@ -1,6 +1,13 @@
 from associative_array import NativeDictionary
 
 
+# Test hash_fun
+def test_hash_fun():
+    size = 4
+    as_pr = NativeDictionary(size)
+    for char in 'abcdefghijklmnopqrstuvwxyz':
+        assert 0 <= as_pr.hash_fun(char) < size
+
 # Test put
 def test_put_1():
     as_ar = NativeDictionary(10)
