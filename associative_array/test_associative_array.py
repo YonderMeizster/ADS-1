@@ -9,6 +9,13 @@ def test_put_1():
 
 
 def test_put_2():
+    as_pr = NativeDictionary(1)
+    as_pr.put('', 1)
+    assert as_pr.is_key('')
+    assert as_pr.get('') == 1
+
+
+def test_put_3():
     as_ar = NativeDictionary(3)
     as_ar.put('1', 1)
     as_ar.put('1', 2)
