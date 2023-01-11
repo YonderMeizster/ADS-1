@@ -12,7 +12,7 @@ def test_hash_fun():
 def test_put_1():
     as_ar = NativeDictionary(10)
     as_ar.put('1', 1)
-    assert as_ar.get('stroka1') == 1
+    assert as_ar.get('1') == 1
 
 
 def test_put_2():
