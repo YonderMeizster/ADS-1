@@ -1,5 +1,3 @@
-import sys
-
 class PowerSet():
     def __init__(self):
         self._size = 100009
