@@ -1,65 +1,56 @@
 class PowerSet():
     def __init__(self):
-        self._size = 100009
-        self.slots = [[None] for _ in range(self._size)]
-
-    def hash_fun(self, value):
-        id = 0
-        for char in value:
-            id += ord(char)
-        return id % self._size
+        self.elements = {}
 
     def _get_all(self):
-        values = []
-        size = 0
-        for slot in self.slots:
-            for value in slot:
-                if value is not None:
-                    values.append(value)
-                    size += 1
-        return {'values' : values, 'size' : size}
+        all = []
+        all.extend(self.elements.keys())
+        return all
 
     def put(self, value):
-        if self.get(value):
-            return
-        
-        slot = self.hash_fun(value)
-        
-        if self.slots[slot][0] is None:
-            self.slots[slot][0] = value
-            return
-        self.slots[slot].append(value)
+        self.elements[value] = value
 
     def get(self, value):
-        slot = self.hash_fun(value)
-        return value in self.slots[slot]
+        return value in self.elements.keys()
 
     def size(self):
-        return self._get_all()['size']
+        return len(self.elements.keys())
 
     def remove(self, value):
-        if not self.get(value):
-            return False
-        
-        slot = self.hash_fun(value)
-
-        self.slots[slot].remove(value)
-        return True
+        if self.get(value):
+            self.elements.pop(value)
+            return True
+        return False
 
     def intersection(self, set2):
-        # пересечение текущего множества и set2
-        return None
+        intersec = PowerSet()
+        keys_set2 = set2.elements.keys()
+        for key in self.elements.keys():
+            if key in keys_set2:
+                intersec.put(key)
+        return intersec
 
     def union(self, set2):
-        # объединение текущего множества и set2
-        return None
+        uni = PowerSet()
+        keys_set2 = set2.elements.keys()
+        for key in self.elements.keys():
+            uni.put(key)
+        for key in keys_set2:
+            uni.put(key)
+        return uni
 
     def difference(self, set2):
         # разница текущего множества и set2
-        return None
+        diff = PowerSet()
+        keys_set2 = set2.elements.keys()
+        for key in self.elements.keys():
+            if key not in keys_set2:
+                diff.put(key)
+        return diff
 
     def issubset(self, set2):
-        # возвращает True, если set2 есть
-        # подмножество текущего множества,
-        # иначе False
-        return False
+        _self_keys = self.elements.keys()
+        for key in set2.elements.keys():
+            if key not in _self_keys:
+                return False
+        return True
