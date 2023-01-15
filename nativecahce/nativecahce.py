@@ -13,14 +13,18 @@ class NativeCache:
 
         return '{' + f'{answer}' + '}'
 
+    def _remove(self, index):
+        self.slots[index] = self.values[index] = None
+        self._clean_hits(index)
+
+    def _clean_hits(self, index):
+        self.hits[index] = 0
+    
     def hash_fun(self, value):
         hash_sum = 0
         for char in value:
             hash_sum = ((hash_sum * 17) + ord(char)) % self.size
         return hash_sum
-
-    def _remove(self, index):
-        self.slots[index] = self.values[index] = self.hits[index] = None
 
     def clean_slot(self, index):
         min_hits = self.hits[index]
@@ -53,6 +57,10 @@ class NativeCache:
         return self.clean_slot(index)
 
     def put(self, key, value):
+        prev_index = self.find(key)
+        if isinstance(prev_index, int):
+            self.
+
         index = self.get_the_slot(key, value)
         if index is None:
             return
@@ -63,7 +71,8 @@ class NativeCache:
         index = self.find(key)
         if index is None:
             return None
-        
+        self.hits[index] += 1
+        return self.values[index]
 
     def find(self, key):
         index = self.hash_fun(key)
@@ -76,11 +85,3 @@ class NativeCache:
                 return index
             index = (index + self.step) % self.size
         return
-
-
-a = NativeCache()
-print(a)
-a.put('key', 1)
-print(a)
-a.put('key1', 1)
-print(a)
