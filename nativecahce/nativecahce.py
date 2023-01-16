@@ -19,6 +19,14 @@ class NativeCache:
 
     def _clean_hits(self, index):
         self.hits[index] = 0
+
+    def keys(self):
+        _keys = []
+        for key in self.slots:
+            if key is not None:
+                _keys.append(key)
+        return _keys
+
     
     def hash_fun(self, value):
         hash_sum = 0
@@ -59,8 +67,10 @@ class NativeCache:
     def put(self, key, value):
         prev_index = self.find(key)
         if isinstance(prev_index, int):
-            self.
-
+            self.slots[prev_index] = key
+            self.values[prev_index] = value
+            self._clean_hits(prev_index)
+            return
         index = self.get_the_slot(key, value)
         if index is None:
             return
