@@ -20,8 +20,7 @@ class NativeCache:
     def _clean_hits(self, index):
         self.hits[index] = 0
 
-    def _check_slots(self, index, condition,
-                     action=lambda value: value):
+    def _check_slots(self, index, condition):
         if condition(index):
             return index
 
